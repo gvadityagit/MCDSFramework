@@ -1,4 +1,4 @@
-public inherited sharing class MessagingWrapperParams {
+public inherited sharing class Module_WrapperParams {
     
     @InvocableVariable(label='Record ID' required=true)
     public Id messagingDetailId;
@@ -21,7 +21,7 @@ public inherited sharing class MessagingWrapperParams {
 	public String sourceApplication{set;get;}
 	public String sourcePageName{set;get;}
     
-    public List<Messaging_Master__c> messagingMasterList {get;set;}
+    public List<Object__c> messagingMasterList {get;set;}
 	
         
     public String state {get;set;}
@@ -31,9 +31,9 @@ public inherited sharing class MessagingWrapperParams {
     
     public List<MessageChainParms>messageChainList{set;get;}
     
-    public class MessageChainParms{
+    public class ModuleChainParms{
     	
-    	public MessageChainParms(String fromStr,String msg,String dt){
+    	public ModuleChainParms(String fromStr,String msg,String dt){
     		this.fromToStr=fromStr;
     		this.messgStr=msg;
     		this.msgDate=dt;
@@ -43,7 +43,7 @@ public inherited sharing class MessagingWrapperParams {
     	public String msgDate{set;get;}
     }
 
-    public class CCARecordWraper{
+    public class ModuleChainWrapper{
         public String recordId{get;set;}
         public String typeSobjectAPI{get;set;}
         public String soapNoteName{get;set;}
@@ -54,7 +54,7 @@ public inherited sharing class MessagingWrapperParams {
         
     }
 
-    public class ColAgreementWrapper{
+    public class ModuleChainWrapper2{
         public String NurseName{get;set;}
         public String PhysicianName{get;set;}
         public String state{get;set;}
@@ -75,7 +75,7 @@ public inherited sharing class MessagingWrapperParams {
         public String soapCaseName{get;set;}
         public Boolean isEscalated{set;get;}
 
-        public ColAgreementWrapper(String recordId, String userType, String userName, String state, String type, Date startDate, Date endDate, String status){
+        public ModuleChainWrapper2(String recordId, String userType, String userName, String state, String type, Date startDate, Date endDate, String status){
             this.recordId= recordId;
             this.NurseName = userType;
             this.PhysicianName= userName;
@@ -106,16 +106,5 @@ public inherited sharing class MessagingWrapperParams {
         public String escalatedStatus{set;get;}
     }
     
-    public class recordWrap{
-        public string RelatedtoMember{get; set;}
-        public string RecordName{get; set;}
-        public string RecordDate{get; set;}
-        public string EngId{get; set;}
-        public Id agrApcId{set;get;}
-        public String agrApcManagerId{set;get;}
-        public String agrApcManagerName{set;get;}
-        public String agrApcName{set;get;}
-        public String agreementName{get;set;}
-        public String agreementAlias{get;set;}
-    }
+   
 }

@@ -1,4 +1,4 @@
-global interface ModuleIBusinessLayer {
+global interface Module_IBusinessLayer {
 
     Map<String,Object> invokeBusinessProcess(ModuleAppLiterals.PROCESS_NAME processName,ModuleAppLiterals.ACTION_NAME actionName, Map<String,Object> inputMap);
     

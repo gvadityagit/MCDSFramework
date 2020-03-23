@@ -17,7 +17,7 @@ public virtual with sharing class ModuleServiceLayerHandler implements IBusiness
                outputMap=this.submodule2UIDashBoard(inputMap,actionName);
             }
             when BulkDataProcessing {
-               outputMap=this.executeBulkDataProcessing(inputMap,actionName);
+               outputMap=this.invokeDataChangeQueueableApex(inputMap,actionName);
             }
         }
         return outputMap;
@@ -52,5 +52,14 @@ public virtual with sharing class ModuleServiceLayerHandler implements IBusiness
         return outputMap;
     }
     
+   private void invokeDataChangeQueueableApex (Map<String, Object> ipMap) {
+
+        System.debug('$$$ ipMap' + ipMap);
+        
+       ModuleQueueable QueObj = new ModuleQueueable(ModuleAppLiterals.PROCESS_NAME.PATHWAY_TO_SOL_INT
+                                                                        , ModuleAppLiterals.ACTION_NAME.CONTACT_DATA_CHANGE_SYNC, ipMap);
+        System.enqueueJob(QueObj);
+        
+    }
     
 }

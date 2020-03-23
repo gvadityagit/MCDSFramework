@@ -1,4 +1,4 @@
-global class MessagingAppLiterals {
+global class ModuleAppLiterals {
     
     global ENUM PROCESS_NAME {SubModule_UIDashBoard,SubModule2_UIDashBoard,BulkDataProcessing}
     global ENUM ACTION_NAME {findMessageMaster,dispatchMessage,

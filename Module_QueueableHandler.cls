@@ -4,8 +4,7 @@ global class Module_QueueableHandler implements Queueable, Database.AllowsCallou
     public Map<String, Object> ipMap;
     public Module_AppLiterals.PROCESS_NAME  processName;
     public Module_AppLiterals.ACTION_NAME  actionName;
-    
-    
+        
     public Module_QueueableHandler(Module_AppLiterals.PROCESS_NAME processName
                                                     , Module_AppLiterals.ACTION_NAME actionName
                                                     , Map<String, Object> ipMap) {        

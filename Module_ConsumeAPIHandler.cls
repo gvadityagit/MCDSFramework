@@ -1,4 +1,4 @@
-public without sharing  class EXT_PP_ConsumeAPIHandler implements Callable {
+public without sharing  class Module_ConsumeAPIHandler implements Callable {
     
        
      public void  invokeviaJWTwithCertificate(){  }

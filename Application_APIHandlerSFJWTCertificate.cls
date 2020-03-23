@@ -1,6 +1,6 @@
-public class PathwayAPIHandlerSFJWTCertificate {
+public class Application_APIHandlerSFJWTCertificate {
     
-      public PathwayAPIHandlerSFJWTCertificate(Configuration config) {
+      public Application_APIHandlerSFJWTCertificate(Configuration config) {
         this.config = config;
     }
         

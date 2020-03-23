@@ -14,7 +14,7 @@ public class Object_TriggerHandler implements Application_TriggerHandlerInterfac
             return TriggerDisabled;
     }
  
-    public void BeforeInsert(Map<Id, SObject> newItems){  }
+    public void BeforeInsert(List<SObject> newItems){  }
  
     public void BeforeUpdate(Map<Id, SObject> newItems, Map<Id, SObject> oldItems) {}
  

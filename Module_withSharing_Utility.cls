@@ -1,5 +1,5 @@
 
-public with sharing class Module_with_Utility {
+public with sharing class Module_withSharing_Utility {
     
     public static Module_IBusinessLayer initServiceLayer (String clsName) {
         Type t = Type.forName(clsName);

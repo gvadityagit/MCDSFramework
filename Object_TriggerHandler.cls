@@ -1,4 +1,4 @@
-public class MessagingMasterTriggerHandler implements PathwayTriggerHandlerInterface
+public class Object_TriggerHandler implements Application_TriggerHandlerInterface
 {
     // Allows unit tests (or other code) to disable this trigger for the transaction
     public static final Boolean TriggerDisabled = true;
@@ -8,15 +8,13 @@ public class MessagingMasterTriggerHandler implements PathwayTriggerHandlerInter
     */
     public Boolean IsDisabled()
     {
-        if (Appcommonmethods.runTrigger('MessagingMasterTrigger'))
+        if (App_Common_Method.runTrigger('Object_TriggerHandler'))
             return false;
         else
             return TriggerDisabled;
     }
  
-    public void BeforeInsert(List<SObject> newItems){
-    //serviceLayer
-    }
+    public void BeforeInsert(Map<Id, SObject> newItems){  }
  
     public void BeforeUpdate(Map<Id, SObject> newItems, Map<Id, SObject> oldItems) {}
  
@@ -28,11 +26,10 @@ public class MessagingMasterTriggerHandler implements PathwayTriggerHandlerInter
         Map<String, Object> outputMap = new Map<String, Object>();
         
         inputMap.put('masterIdSet', newItems.keySet());
-        IBusinessLayer iBusinessLayer = MessagingUtility.initServiceLayer(MessagingAppLiterals.CLASS_REF.MessagingServiceLayerHandler.name());
-        outputMap = iBusinessLayer.invokeBusinessProcess(MessagingAppLiterals.PROCESS_NAME.BulkDataProcessing,MessagingAppLiterals.ACTION_NAME.ShareMasterRecords, inputMap);
-        system.debug('mY outputmap='+outputMap);
-        if(! (Boolean)outputMap.get(MessagingAppLiterals.OUTPUT_KEY.IS_SUCCESS.name())){
-            throw new MessagingException((String) outputMap.get(MessagingAppLiterals.OUTPUT_KEY.ERROR_MSG.name()));
+        Module_IBusinessLayer iBusinessLayer = Module_Utility.initServiceLayer(Module_AppLiterals.CLASS_REF.Module_ServiceLayerHandler.name());
+        outputMap = iBusinessLayer.invokeBusinessProcess(Module_AppLiterals.PROCESS_NAME.BulkDataProcessing,Module_AppLiterals.ACTION_NAME.ShareMasterRecords, inputMap);
+         if(outputMap.get()){
+            //do somelogic
         }
 
     }

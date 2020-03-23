@@ -1,6 +1,6 @@
-public class PathwayAPIHandlerSFJWT {
+public class Module_API_HandlerSFJWT {
     
-    public PathwayAPIHandlerSFJWT(Configuration config) {
+    public Module_API_HandlerSFJWT(Configuration config) {
         this.config = config;
     }
     

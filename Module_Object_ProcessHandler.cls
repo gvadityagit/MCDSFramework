@@ -1,4 +1,4 @@
-public class EXT_PP_ProcessHandler {
+public class Module_Object_ProcessHandler {
 
     /*Generic method for all process Builder*/
     @invocablemethod()

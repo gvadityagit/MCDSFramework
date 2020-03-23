@@ -1,4 +1,4 @@
-public virtual with sharing class ModuleServiceLayerHandler implements Module_IBusinessLayer {
+public virtual with sharing class Module_ServiceLayerHandler implements Module_IBusinessLayer {
     
     
     public virtual Map<String,List<Object>> performUserInterfaceValidations(String action, Map<String, Object> inputMap){ 

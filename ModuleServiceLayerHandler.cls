@@ -1,15 +1,6 @@
 public virtual with sharing class ModuleServiceLayerHandler implements IBusinessLayer{
     
     
-    public virtual Map<String,List<Object>> invokeBusinessProcess(String action, Map<String, Object> inputMap){
-        switch on action {
-            when 'method1'{
-                this.performBusinessLogicMethod1(inputMap);
-            }
-        }
-        return null;
-    }
-    
     public virtual Map<String,List<Object>> performUserInterfaceValidations(String action, Map<String, Object> inputMap){ 
         return null;
     }
@@ -17,21 +8,48 @@ public virtual with sharing class ModuleServiceLayerHandler implements IBusiness
         return null;
     }
     
-    
-    private void performBusinessLogicMethod1(Map<String, Object> inputMap){
-        //perform the input validations
-        //performUserInterfaceValidations();
-        //invoke the UtilityClass
-        EXT_PP_Utility.checkForActiveCommunityAssessment();
+     public virtual Map<String,Object> invokeBusinessProcess(ModuleAppLiterals.PROCESS_NAME processName,ModuleAppLiterals.ACTION_NAME actionName, Map<String, Object> inputMap){
+     switch on processName {
+            when submodule1UIDashBoard {
+                outputMap=this.submodule1UIDashBoard(inputMap,actionName);
+            }
+            when submodule2UIDashBoard {
+               outputMap=this.submodule2UIDashBoard(inputMap,actionName);
+            }
+            when BulkDataProcessing {
+               outputMap=this.executeBulkDataProcessing(inputMap,actionName);
+            }
+        }
+        return outputMap;
     }
     
-    private void performBusinessLogicMethod2(){
-        //perform the input validations
-        //perform the actual logic
-    }
-    
-    private void performBusinessScenario3(String searchKey,String searchValue){
-        
+    private Map<String,Object> submodule1UIDashBoard(Map<String, Object> inputMap,MessagingAppLiterals.ACTION_NAME actionName){
+        try{
+            switch on actionName {
+                when findsomething {
+                    outputMap=this.findsomething(inputMap);
+                }
+                when dispatchMessage {
+                    outputMap=this.dispatchMessageProcess(inputMap);
+                }
+                when fetchMessagesFromDetail {
+                    outputMap= this.fetchMessagesFromDetailObject(inputMap);
+                } 
+                when fetchMsgDashboard {
+                    outputMap=this.fetchMsgDashboardwrplst(inputMap);
+                }
+                when getMessageDetailsForView{
+                    outputMap=this.fetchMsgDetailsforView(inputMap);
+                } 
+                when fetchMustacheTemplate{
+                    outputMap=this.fetchMustacheTemplate(inputMap);
+                }   
+            }
+        }
+        catch(Exception e){
+               throw e;
+        }
+        return outputMap;
     }
     
     

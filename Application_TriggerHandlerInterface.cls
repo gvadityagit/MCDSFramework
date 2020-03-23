@@ -1,4 +1,4 @@
-public interface PathwayTriggerHandlerInterface {
+public interface Application_TriggerHandlerInterface {
     void BeforeInsert(List<SObject> newItems);
  
     void BeforeUpdate(Map<Id, SObject> newItems, Map<Id, SObject> oldItems);

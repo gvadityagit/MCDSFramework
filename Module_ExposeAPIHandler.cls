@@ -1,14 +1,14 @@
-@RestResource(urlMapping='/pathway/physicianPortal/*')
-global with sharing class EXT_PP_ExposeAPIHandler {
+@RestResource(urlMapping='/application/modulename/*')
+global with sharing class Module_ExposeAPIHandler {
     
     static List<Wrapper> wrapperlist=null;
     
     @HttpGet
-    global static List<Wrapper> findrecords(){
+    global static List<Wrapper> genericGet(){
         String searchKey = RestContext.request.params.get('searchKey');
         String searchValue = RestContext.request.params.get('searchValue');
         if(searchKey<>null && searchValue<>null){
-            EXT_PP_ServiceLayerHandler.performBusinessScenario3(searchKey,searchValue);
+          //invokeServiceLayer
         }
         return wrapperList;
     } 

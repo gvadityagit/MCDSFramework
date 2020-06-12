@@ -30,19 +30,19 @@ public virtual with sharing class Module_ServiceLayerHandler implements Module_I
                     outputMap=this.findsomething(inputMap);
                 }
                 when dispatchMessage {
-                    outputMap=this.dispatchMessageProcess(inputMap);
+                    outputMap=this.dispatchProcess(inputMap);
                 }
                 when fetchMessagesFromDetail {
-                    outputMap= this.fetchMessagesFromDetailObject(inputMap);
+                    outputMap= this.fetchFromDetailObject(inputMap);
                 } 
                 when fetchMsgDashboard {
-                    outputMap=this.fetchMsgDashboardwrplst(inputMap);
+                    outputMap=this.fetchDashboardwrplst(inputMap);
                 }
                 when getMessageDetailsForView{
-                    outputMap=this.fetchMsgDetailsforView(inputMap);
+                    outputMap=this.fetchDetailsforView(inputMap);
                 } 
                 when fetchMustacheTemplate{
-                    outputMap=this.fetchMustacheTemplate(inputMap);
+                    outputMap=this.fetchTemplate(inputMap);
                 }   
             }
         }
@@ -56,8 +56,8 @@ public virtual with sharing class Module_ServiceLayerHandler implements Module_I
 
         System.debug('$$$ ipMap' + ipMap);
         
-       ModuleQueueable QueObj = new ModuleQueueable(ModuleAppLiterals.PROCESS_NAME.PATHWAY_TO_SOL_INT
-                                                                        , ModuleAppLiterals.ACTION_NAME.CONTACT_DATA_CHANGE_SYNC, ipMap);
+       ModuleQueueable QueObj = new ModuleQueueable(ModuleAppLiterals.PROCESS_NAME
+                                                                        , ModuleAppLiterals.ACTION_NAME, ipMap);
         System.enqueueJob(QueObj);
         
     }

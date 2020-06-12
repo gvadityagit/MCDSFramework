@@ -35,7 +35,7 @@ global with sharing class Module_ExposeAPIHandler {
       }
 
 global class Wrapper{
-    public ID pathwaySFID;
+ 
     public String firstName;
     public String lastName;
     public String Gender;

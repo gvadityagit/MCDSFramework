@@ -8,10 +8,7 @@ public class Object_TriggerHandler implements Application_TriggerHandlerInterfac
     */
     public Boolean IsDisabled()
     {
-        if (App_Common_Method.runTrigger('Object_TriggerHandler'))
-            return false;
-        else
-            return TriggerDisabled;
+        //your code.
     }
  
     public void BeforeInsert(List<SObject> newItems){  }
@@ -25,7 +22,7 @@ public class Object_TriggerHandler implements Application_TriggerHandlerInterfac
         Map<String, Object> inputMap = new Map<String, Object>();
         Map<String, Object> outputMap = new Map<String, Object>();
         
-        inputMap.put('masterIdSet', newItems.keySet());
+        inputMap.put('masterSet', newItems.keySet());
         Module_IBusinessLayer iBusinessLayer = Module_Utility.initServiceLayer(Module_AppLiterals.CLASS_REF.Module_ServiceLayerHandler.name());
         outputMap = iBusinessLayer.invokeBusinessProcess(Module_AppLiterals.PROCESS_NAME.BulkDataProcessing,Module_AppLiterals.ACTION_NAME.ShareMasterRecords, inputMap);
          if(outputMap.get()){

@@ -1,49 +1,67 @@
-public virtual with sharing class Module_ServiceLayerHandler implements Module_IBusinessLayer {
+public virtual inherited sharing class Module_ServiceLayerHandler implements Module_IBusinessLayer {
     
     
     public virtual Map<String,List<Object>> performUserInterfaceValidations(String action, Map<String, Object> inputMap){ 
+        switch on actionName {
+              when UIDashBoard {
+                  this.performDisplayValidation(inputMap);  
+              }
+             when getMasterRecord {
+                 this.performGeneicValidation(inputMap); 
+             }
+             when getDetailsRecords {
+                 this.performGeneicValidation(inputMap); 
+             }
+             when insertMasterRecord {
+                 this.performInsertValidation(inputMap);
+              }
+             }
+        }
         return null;
     }
     public virtual Map<String,List<Object>> performBulkValidations(String moduleName, Map<String,Object> inputMap){
+       
         return null;
     }
     
      public virtual Map<String,Object> invokeBusinessProcess(ModuleAppLiterals.PROCESS_NAME processName,ModuleAppLiterals.ACTION_NAME actionName, Map<String, Object> inputMap){
      switch on processName {
-            when submodule1UIDashBoard {
-                outputMap=this.submodule1UIDashBoard(inputMap,actionName);
+            when UILevel {
+                outputMap=this.UILevelProcesFlow(inputMap,actionName);
             }
-            when submodule2UIDashBoard {
+            when bulkDataProcessing {
                outputMap=this.submodule2UIDashBoard(inputMap,actionName);
-            }
-            when BulkDataProcessing {
-               outputMap=this.invokeDataChangeQueueableApex(inputMap,actionName);
             }
         }
         return outputMap;
     }
     
-    private Map<String,Object> submodule1UIDashBoard(Map<String, Object> inputMap,MessagingAppLiterals.ACTION_NAME actionName){
+    private Map<String,Object> UILevelProcesFlow(Map<String, Object> inputMap,MessagingAppLiterals.ACTION_NAME actionName){
         try{
             switch on actionName {
-                when findsomething {
-                    outputMap=this.findsomething(inputMap);
+                when UIDashBoard {
+                    this.performUserInterfaceValidations(UIDashBoard,inputMap);
+                    outputMap=this.showDashboardDetails(inputMap);
                 }
-                when dispatchMessage {
-                    outputMap=this.dispatchProcess(inputMap);
+                when getMasterRecord {
+                    outputMap=this.getMasterRecord(inputMap);
                 }
-                when fetchMessagesFromDetail {
+                when fetchFromDetail {
                     outputMap= this.fetchFromDetailObject(inputMap);
                 } 
-                when fetchMsgDashboard {
-                    outputMap=this.fetchDashboardwrplst(inputMap);
+                when fetchspecificFlow1 {
+                    outputMap=this.fetchSamplewrplst(inputMap);
                 }
-                when getMessageDetailsForView{
+                when fetchspecificFlow2{
                     outputMap=this.fetchDetailsforView(inputMap);
                 } 
                 when fetchMustacheTemplate{
                     outputMap=this.fetchTemplate(inputMap);
-                }   
+                }  
+                when insertFlow{
+                    outputMap=this.insertMasterObject(inputMap);
+                }  
+                
             }
         }
         catch(Exception e){

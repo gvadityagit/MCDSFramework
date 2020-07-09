@@ -66,15 +66,14 @@ public virtual inherited sharing class Module_ServiceLayerHandler implements Mod
         }
         catch(Exception e){
                throw e;
+            //need to handle exception ( through another component ...coming soon)
         }
         return outputMap;
     }
     
    private void invokeDataChangeQueueableApex (Map<String, Object> ipMap) {
-
-        System.debug('$$$ ipMap' + ipMap);
         
-       ModuleQueueable QueObj = new ModuleQueueable(ModuleAppLiterals.PROCESS_NAME
+       Module_Queueable queObj = new Module_Queueable(ModuleAppLiterals.PROCESS_NAME
                                                                         , ModuleAppLiterals.ACTION_NAME, ipMap);
         System.enqueueJob(QueObj);
         

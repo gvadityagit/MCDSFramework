@@ -30,7 +30,7 @@ public virtual inherited sharing class Module_ServiceLayerHandler implements Mod
                 outputMap=this.UILevelProcesFlow(inputMap,actionName);
             }
             when bulkDataProcessing {
-               outputMap=this.submodule2UIDashBoard(inputMap,actionName);
+               outputMap=this.bulkProcesFlow(inputMap,actionName);
             }
         }
         return outputMap;
@@ -71,7 +71,7 @@ public virtual inherited sharing class Module_ServiceLayerHandler implements Mod
         return outputMap;
     }
     
-   private void invokeDataChangeQueueableApex (Map<String, Object> ipMap) {
+   private void invokeQueueableApex (Map<String, Object> ipMap) {
         
        Module_Queueable queObj = new Module_Queueable(ModuleAppLiterals.PROCESS_NAME
                                                                         , ModuleAppLiterals.ACTION_NAME, ipMap);

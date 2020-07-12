@@ -36,7 +36,7 @@ public virtual inherited sharing class Module_ServiceLayerHandler implements Mod
         return outputMap;
     }
     
-    private Map<String,Object> UILevelProcesFlow(Map<String, Object> inputMap,MessagingAppLiterals.ACTION_NAME actionName){
+    private Map<String,Object> UILevelProcesFlow(Map<String, Object> inputMap,ModuleAppLiterals.ACTION_NAME actionName){
         try{
             switch on actionName {
                 when UIDashBoard {
@@ -69,6 +69,26 @@ public virtual inherited sharing class Module_ServiceLayerHandler implements Mod
             //need to handle exception ( through another component ...coming soon)
         }
         return outputMap;
+    }
+
+   private Map<String,Object> bulkProcesFlow(ModuleAppLiterals.ACTION_NAME actionName,Map<String, Object> inputMap){
+        this.invokeQueueableApex(inputMap);
+       return null;
+   }
+
+   private Map<String,Object> showDashboardDetails(Map<String, Object> ipMap){
+        
+       List<sObject> getData=fetchDetailsforDisplay(ipMap.get('somekey'));
+       if(getData<>null && getData.size()>0){
+           //handle some other logic
+       }
+           //can invoke some other methods
+            insertMasterObject(ipMap);
+   }
+
+   
+    private List<sObject> fetchDetailsforDisplay(String key){
+        retrun "something";
     }
     
    private void invokeQueueableApex (Map<String, Object> ipMap) {
